@@ -9,7 +9,7 @@ class Graph extends Component {
     render() {
         return (
             <LineChart width={this.props.width} height={this.props.height} data={this.props.data}>
-                <Line type="linear" dataKey="value" stroke="#2780E3" dot={false} />
+                <Line type="linear" dataKey="value" stroke="#2780E3" dot={false} isAnimationActive={false}/>
                 <XAxis type="number" interval={"preserveStartEnd"} dataKey="n" />
                 <YAxis />
             </LineChart>
