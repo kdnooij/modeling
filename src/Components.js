@@ -5,15 +5,12 @@ import { Col, Navbar, Jumbotron, FormGroup, ControlLabel, FormControl, HelpBlock
 export class NavBar extends Component {
     render() {
         return (
-            <Navbar inverse collapseOnSelect fixedTop>
+            <Navbar inverse fixedTop>
                 <Navbar.Header>
                     <Navbar.Brand>
                         <a href="#">Modeling - 0LEB0</a>
                     </Navbar.Brand>
-                    <Navbar.Toggle />
                 </Navbar.Header>
-                <Navbar.Collapse>
-                </Navbar.Collapse>
             </Navbar>
         )
     }
