@@ -27,7 +27,7 @@ export class Input extends Component {
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
-        console.log("State of " + name + " changed to " + value);
+        //console.log("State of " + name + " changed to " + value);
         this.props.handleStateChange(name, value)
     }
 

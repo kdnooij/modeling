@@ -38,12 +38,17 @@ class App extends Component {
             'rolstoelDraagkracht': 10,
             'property': 'reizigers',
             'start': 0,
-            'stop': 1
+            'stop': 1,
+            'graphWidth': 500
         }
         this.handleStateChange = this.handleStateChange.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
 
+    componentDidMount(x, y, z) {
+        this.setState({graphWidth:document.getElementById('graph-panel').offsetWidth});
+    }
+    
     handleStateChange(name, value) {
         this.setState({
             [name]: value
@@ -60,7 +65,7 @@ class App extends Component {
                 <NavBar />
                 <Header />
                 <div className="container">
-                    <Panel>
+                    <Panel id="graph-panel">
                         <Row>
                             <Col md={4} xs={12}>
                                 <FormGroup controlId="formControlsSelect">
@@ -98,8 +103,8 @@ class App extends Component {
                             />
                         </Row>
 
-                        <Graph width={1000} height={400} data={this.getGraph(parseFloat(this.state.start) ? parseFloat(this.state.start) : 0,
-                            parseFloat(this.state.stop) && !(parseFloat(this.state.stop) - parseFloat(this.state.start) < 0.01) ? parseFloat(this.state.stop) : parseFloat(this.state.start) + 0.01, 1000, this.state.property)} />
+                        <Graph width={this.state.graphWidth-50} height={this.state.graphWidth * 9/16} data={this.getGraph(parseFloat(this.state.start) ? parseFloat(this.state.start) : 0,
+                            parseFloat(this.state.stop) && !(parseFloat(this.state.stop) - parseFloat(this.state.start) < 0.01) ? parseFloat(this.state.stop) : parseFloat(this.state.start) + 0.01, 500, this.state.property)} />
                     </Panel>
 
                     <Row>
@@ -265,8 +270,8 @@ class App extends Component {
         var step = 0;
         for (var i = start; i <= end; i += (end - start) / steps) {
             dataset[property] = i;
-            console.log(dataset);
-            console.log("value: " + this.getTotaleKosten(dataset));
+            //console.log(dataset);
+            //console.log("value: " + this.getTotaleKosten(dataset));
             data[step] = { n: i, value: this.getTotaleKosten(dataset) };
             step++;
         }
